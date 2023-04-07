@@ -1,7 +1,9 @@
 from flask import Flask, request
-from database.handler import DataBase
+import database.handler
+
 app = Flask(__name__)
-db = DataBase()
+db = database.handler.DataBase()
+
 @app.route('/register')
 def register():
     name = request.args.get('name')
