@@ -12,6 +12,7 @@ class DataBase:
         try:
             sql = '''SELECT * FROM users_ac WHERE email=%s AND password=%s;'''
             self.cursor.execute(sql, (email, password))
+            print(self.cursor.fetchone())
             return self.cursor.fetchone()
         except mysql.connector.Error as error:
             print("Failed to execute query: {}".format(error))
@@ -21,6 +22,8 @@ class DataBase:
             sql = '''INSERT INTO users_ac(id, name, email, password) VALUES (?, ?, ?, ?) RETURNING *'''
             result = self.cursor.execute(sql, (name, email, password))
             self.connection.commit()
+            print(result)
+            print(self.connection.commit())
             return result
         except mysql.connector.Error as error:
             print("Failed to execute query: {}".format(error))
@@ -30,6 +33,8 @@ class DataBase:
             sql = '''INSERT INTO users_ac(id) VALUES (?)'''
             result = self.cursor.execute(sql, (name,))
             self.connection.commit()
+            print(result)
+            print(self.connection.commit())
             return result
         except mysql.connector.Error as error:
             print("Failed to execute query: {}".format(error))
