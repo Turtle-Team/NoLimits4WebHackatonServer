@@ -17,3 +17,7 @@ def login():
     return database.handler.DataBase().login(email, password)
 
 
+@app.route('/pop')
+def pop():
+    return request.args.get('id')
+
