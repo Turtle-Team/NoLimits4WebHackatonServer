@@ -1,5 +1,4 @@
-DATABASE = {'password': 1234, 'login': 'postgres', 'basename': 'kind_app'}
-
+DATABASE = {'password': '2374619', 'login': 'root', 'ip': '45.155.207.232', 'basename': 'kind_app'}
 
 # FLASK_IP = "45.155.207.232"
 FLASK_IP = "localhost"
