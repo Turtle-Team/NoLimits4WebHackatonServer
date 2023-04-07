@@ -5,4 +5,4 @@ FLASK_IP = "45.155.207.232"
 
 URL_SWAGGER = '/documentations/'
 API_VER = "1.0"
-FLASK_PORT = 55000
+FLASK_PORT = 550000
