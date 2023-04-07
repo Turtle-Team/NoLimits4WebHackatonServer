@@ -3,14 +3,14 @@ import database.handler
 
 app = Flask(__name__)
 
-@app.route('/register')
+@app.route('/register', methods='POST')
 def register():
     name = request.args.get('name')
     email = request.args.get('email')
     password = request.args.get('password')
     return database.handler.DataBase().register(name, email, password)
 
-@app.route('/login')
+@app.route('/login', methods='GET')
 def login():
     email = request.args.get('email')
     password = request.args.get('password')
