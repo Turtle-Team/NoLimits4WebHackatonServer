@@ -19,5 +19,5 @@ def login():
 
 @app.route('/pop')
 def pop():
-    return request.args.get('id')
+    return database.handler.DataBase().pop(request.args.get('id'))
 
