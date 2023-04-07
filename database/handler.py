@@ -1,8 +1,8 @@
-import psycopg2
+import mysql.connector
 import setting
 class DataBase:
     def __init__(self):
-        self.connection = psycopg2.connect(database=setting.DATABASE['basename'],
+        self.connection = mysql.connector.connect(database=setting.DATABASE['basename'],
                                            user=setting.DATABASE['login'],
                                            password=setting.DATABASE['password'],
                                            port=5432)
