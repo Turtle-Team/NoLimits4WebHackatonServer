@@ -19,7 +19,7 @@ class DataBase:
 
     def register(self, name, email, password):
         try:
-            sql = '''INSERT INTO users_data(id, name, email, password) VALUES (%s, %s, %s, %s) RETURNING *'''
+            sql = '''INSERT INTO users_data(id_user, name, email, password) VALUES (%s, %s, %s, %s) RETURNING *'''
             result = self.cursor.execute(sql, (name, email, password))
             self.connection.commit()
             print(result)
@@ -30,7 +30,7 @@ class DataBase:
 
     def pop(self, name):
         try:
-            sql = '''INSERT INTO users_data(id) VALUES (%s)'''
+            sql = '''INSERT INTO users_data(id_user) VALUES (%s)'''
             result = self.cursor.execute(sql, (name,))
             self.connection.commit()
             print(result)
