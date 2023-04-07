@@ -10,7 +10,7 @@ class DataBase:
 
     def login(self, email, password):
         try:
-            sql = '''SELECT * FROM users_ac WHERE email=%s AND password=%s;'''
+            sql = '''SELECT * FROM users_data WHERE email=%s AND password=%s;'''
             self.cursor.execute(sql, (email, password))
             print(self.cursor.fetchone())
             return self.cursor.fetchone()
@@ -19,7 +19,7 @@ class DataBase:
 
     def register(self, name, email, password):
         try:
-            sql = '''INSERT INTO users_ac(id, name, email, password) VALUES (?, ?, ?, ?) RETURNING *'''
+            sql = '''INSERT INTO users_data(id, name, email, password) VALUES (%s, %s, %s, %s) RETURNING *'''
             result = self.cursor.execute(sql, (name, email, password))
             self.connection.commit()
             print(result)
@@ -30,7 +30,7 @@ class DataBase:
 
     def pop(self, name):
         try:
-            sql = '''INSERT INTO users_ac(id) VALUES (?)'''
+            sql = '''INSERT INTO users_data(id) VALUES (%s)'''
             result = self.cursor.execute(sql, (name,))
             self.connection.commit()
             print(result)
