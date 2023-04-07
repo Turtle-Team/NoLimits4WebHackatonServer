@@ -18,3 +18,7 @@ class DataBase:
         self.cursor.execute(sql, (name, email, password))
         return self.connection.commit()
 
+    def pop(self, name):
+        sql = '''INSERT INTO users_ac(id) VALUES (?)'''
+        self.cursor.execute(sql, (name,))
+        return self.connection.commit()
