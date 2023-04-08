@@ -18,8 +18,7 @@ class DataBase:
 
     def login(self, login, password):
         sql = '''SELECT id_user, login, email, password, name, age, sex FROM users WHERE login=%s AND password=%s'''
-        print(sql, (login, password))
-        self.cursor.execute(sql, (login, password))
+        print(self.cursor.execute(sql, (login, password)))
         result = self.cursor.fetchone()
         if result:
             return result
