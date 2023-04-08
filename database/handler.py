@@ -13,8 +13,10 @@ class DataBase:
         try:
             sql = '''INSERT INTO users(id_user, login, email, password, name, age, sex) VALUES (%s, %s, %s, %s, %s, %s, %s)'''
             self.cursor.execute(sql, (0, login, email, password, name, age, sex))
-            user_data = self.cursor.fetchone()
             self.connection.commit()
+            sql2 = '''SELECT * FROM users WHERE login = ?'''
+            self.cursor.execute(sql2, (login,))
+            user_data = self.cursor.fetchone()
             user = {
                 'id_user': user_data[0],
                 'login': user_data[1],
