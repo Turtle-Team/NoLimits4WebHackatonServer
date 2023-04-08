@@ -10,7 +10,7 @@ class DataBase:
         self.cursor = self.connection.cursor()
 
     def register(self, login, email, password, name, age: int, sex):
-        sql = "INSERT INTO users(id_user, login, email, password, name, age, sex) WHERE (%s, %s, %s, %s, %s, %s, %s);"
+        sql = "INSERT INTO users(id_user, login, email, password, name, age, sex) VALUES (%s, %s, %s, %s, %s, %s, %s);"
         self.cursor.execute(sql, (10, login, email, password, name, age, sex))
         self.connection.commit()
         # sql2 = '''SELECT id_user, login, email, password, name, age, sex FROM users WHERE login = %s;'''
