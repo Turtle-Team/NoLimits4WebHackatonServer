@@ -11,7 +11,7 @@ class DataBase:
 
     def register(self, login, email, password, name, age, sex):
         try:
-            sql = '''INSERT INTO users(id_user, login, email, password, name, age, sex) VALUES (%s, %s, %s, %s, %s, %s, %s)'''
+            sql = '''INSERT INTO users(id_user, login, email, password, name, age, sex) VALUES (?, ?, ?, ?, ?, ?, ?)'''
             self.cursor.execute(sql, (0, login, email, password, name, age, sex))
             self.connection.commit()
             sql2 = '''SELECT * FROM users WHERE login = ?'''
