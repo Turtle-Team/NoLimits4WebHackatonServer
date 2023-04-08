@@ -13,7 +13,7 @@ class DataBase:
         self.cursor.execute(sql, (id_user, login, email, password, name, age, sex))
         if self.connection.commit():
             return (id_user, login, email, password, name, age, sex)
-        else
+        else:
             return 'Error, not data...'
 
     def login(self, login, password):
