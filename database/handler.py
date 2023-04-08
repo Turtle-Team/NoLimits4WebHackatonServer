@@ -11,10 +11,10 @@ class DataBase:
 
     def register(self, login, email, password, name, age, sex):
         try:
-            sql = '''INSERT INTO users(id_user, login, email, password, name, age, sex) VALUES (?, ?, ?, ?, ?, ?, ?)'''
+            sql = '''INSERT INTO users(id_user, login, email, password, name, age, sex) VALUES (?, ?, ?, ?, ?, ?, ?);'''
             self.cursor.execute(sql, (0, login, email, password, name, age, sex))
             self.connection.commit()
-            sql2 = '''SELECT * FROM users WHERE login = %s'''
+            sql2 = '''SELECT * FROM users WHERE login = %s;'''
             self.cursor.execute(sql2, (login,))
             user_data = self.cursor.fetchone()
             user = {
@@ -32,7 +32,7 @@ class DataBase:
 
 
     def login(self, login, password):
-        sql = '''SELECT id_user, login, email, password, name, age, sex FROM users WHERE login=%s AND password=%s'''
+        sql = '''SELECT id_user, login, email, password, name, age, sex FROM users WHERE login=%s AND password=%s;'''
         self.cursor.execute(sql, (login, password))
         result = self.cursor.fetchone()
         if result:
