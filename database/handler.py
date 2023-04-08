@@ -20,7 +20,7 @@ class DataBase:
         sql = '''SELECT id_user, login, email, password, name, age, sex FROM users WHERE login=%s AND password=%s'''
         self.cursor.execute(sql, (login, password))
         result = self.cursor.fetchone()
-        print(login, password)
+        print(self.cursor.execute(sql, (login, password)))
         if result:
             return result
         else:
