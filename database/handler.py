@@ -8,33 +8,20 @@ class DataBase:
                                            password=setting.DATABASE['password'])
         self.cursor = self.connection.cursor()
 
-    def login(self, email, password):
-        try:
-            sql = '''SELECT * FROM users_data WHERE email=%s AND password=%s;'''
-            self.cursor.execute(sql, (email, password))
-            print(self.cursor.fetchone())
-            return self.cursor.fetchone()
-        except mysql.connector.Error as error:
-            print("Failed to execute query: {}".format(error))
+    def register(self, id_user, login, email, password, name, age, sex):
+        sql = '''INSERT INTO users(id_user, login, email, password, name, age, sex) VALUES (%s, %s, %s, %s, %s, %s, %s)'''
+        self.cursor.execute(sql, (id_user, login, email, password, name, age, sex))
+        if self.connection.commit():
+            return (id_user, login, email, password, name, age, sex)
+        else
+            return 'Error, not data...'
 
-    def register(self, name, email, password):
-        try:
-            sql = '''INSERT INTO users_data(id_user, name, email, password) VALUES (%s, %s, %s, %s) RETURNING *'''
-            result = self.cursor.execute(sql, (name, email, password))
-            self.connection.commit()
-            print(result)
-            print(self.connection.commit())
+    def login(self, login, password):
+        sql = '''SELECT (id_user, login, email, password, name, age, sex) FROM users WHERE logfin=%s AND password=%s'''
+        self.cursor.execute(sql, (login, password))
+        result = self.cursor.fetchall()
+        if result:
             return result
-        except mysql.connector.Error as error:
-            print("Failed to execute query: {}".format(error))
+        else:
+            return 'Error, not data...'
 
-    def pop(self, name):
-        try:
-            sql = '''INSERT INTO users_data(id_user) VALUES (%s)'''
-            result = self.cursor.execute(sql, (name,))
-            self.connection.commit()
-            print(result)
-            print(self.connection.commit())
-            return result
-        except mysql.connector.Error as error:
-            print("Failed to execute query: {}".format(error))
