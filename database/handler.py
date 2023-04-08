@@ -11,7 +11,7 @@ class DataBase:
 
     def register(self, login, email, password, name, age: int, sex):
         sql = "INSERT INTO users(id_user, login, email, password, name, age, sex) VALUES (%s, %s, %s, %s, %s, %s, %s);"
-        self.cursor.execute(sql, (10, login, email, password, name, age, sex))
+        self.cursor.execute(sql, (0, login, email, password, name, age, sex))
         self.connection.commit()
         # sql2 = '''SELECT id_user, login, email, password, name, age, sex FROM users WHERE login = %s;'''
         # self.cursor.execute(sql2, (login,))
