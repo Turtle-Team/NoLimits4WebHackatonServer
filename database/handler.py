@@ -17,7 +17,7 @@ class DataBase:
             return 'Error, not data...'
 
     def login(self, login, password):
-        sql = '''SELECT id_user, login, email, password, name, age, sex FROM users WHERE login=? AND password=?'''
+        sql = '''SELECT id_user, login, email, password, name, age, sex FROM users WHERE login=%s AND password=%s'''
         self.cursor.execute(sql, (login, password))
         result = self.cursor.fetchone()
         if result:
